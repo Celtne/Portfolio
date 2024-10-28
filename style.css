@@ -1,0 +1,131 @@
+html, body {
+  margin: none;
+  padding: none;
+  color: white;
+  font-family: courier;
+  
+}
+
+.bgColor {
+  background: #ff61b1;
+}
+
+canvas {
+  display: block;
+}
+
+script {
+  margin: none;
+  padding: none;
+}
+
+#nav {
+	color: white;
+  border-bottom: 5px solid black;
+  margin-bottom: 10pt;
+  padding: none;
+}
+
+button{
+  width: 100px;
+  font-size: 15px;
+  color: white;
+  border: 5px dotted pink;
+	background-color: black;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h1{
+  font-size: 40px;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+	color: rgb(255, 97, 177);
+}
+
+p{
+  font-size: 15px;
+  font-style: bold;
+}
+
+#descript{
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  border: 3px dashed black;
+  border-radius: 50px;
+  
+}
+
+
+.mainContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar {
+	display: flex;
+	flex-wrap: wrap;
+  background: #ff61b1;
+	/* color: ; */
+	font-size: 15pt;
+	/* font-family:  */
+}
+
+
+.dropdown {
+	width: 100px; 
+}
+
+.dropdown-content a {
+  float: none;
+  width: 100px;
+  /* padding: 1px 16px; */
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+} 
+
+.button:hover {
+	background-color: #ff43bc;
+	color: black;
+}
+
+
+.dropdown-content {
+  display: none;
+  background-color: black;
+  position: absolute;
+  z-index: 1;
+}
+
+.description{
+  width: 700px;
+  margin: auto;
+	padding: auto;
+	font-size: 15pt;
+	line-height: 1.5;
+}
+
+#myCanvas {
+  width: 100px;
+  height: auto;
+  fill: black;
+  display: block;
+}
