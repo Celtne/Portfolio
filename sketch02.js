@@ -1,117 +1,79 @@
-let onOff = [];
+let stars = [];
 
-let col1;
-let col2;
+class star {
+  constructor(x, y) {
+    this.loc = createVector(x, y);
+    this.vel = createVector(random(-5, 5), random(-5, 5));
+    this.numPoint = random(3, 10);
+    this.triLength = random(10, 40);
+    this.triWidth = random(10, 20);
+    this.centerDia = random(10, 40);
+    this.centerCol = color(220, 20, random(255));
+    this.triCol = color(230, 18, random(255));
+    this.rotationSpd = random(1, 5);
+    this.rotations = 2;
+  }
 
-let rows = 30;
-let cols = 30;
+  move() {
+    this.loc.add(this.vel);
 
-let xLoc = 0, yLoc = 0;
-let xSpeed =4, ySpeed = 3;
+    // Check if the flower hits the screen edges and reverse velocity
+    if (this.loc.x > width - this.centerDia / 2 || this.loc.x < this.centerDia / 2) {
+      this.vel.x *= -1; // Reverse x direction
+    }
+    if (this.loc.y > height - this.centerDia / 2 || this.loc.y < this.centerDia / 2) {
+      this.vel.y *= -1; // Reverse y direction
+    }
+  }
 
+  display() {
+    push();
+    translate(this.loc.x, this.loc.y);
+    rotate(this.rotations);
+
+    for (let i = 0; i < this.numPoint; i++) {
+      fill(this.triCol);
+      rotate(360 / this.numPoint);
+      let x1 = this.centerDia / 2;
+      let y1 = -this.triWidth / 2;
+      let x2 = this.centerDia / 2;
+      let y2 = this.triWidth / 2; 
+      let x3 = x1 + this.triLength;
+      let y3 = 0;
+
+
+      triangle(x1, y1, x2, y2, x3, y3);
+    }
+
+    fill(this.centerCol);
+    ellipse(0, 0, this.centerDia, this.centerDia);
+
+    pop();
+    this.rotations += this.rotationSpd;
+  }
+}
 
 
 function setup() {
-  
-  
   createCanvas(windowWidth, windowHeight);
-  
-  colorMode(HSB);
-  
-  col1 = color("#ff6ec7");
-  col2 = color("#ff00ff");
-  col3 = color("#");
-
-  let counter = 0;
-  for (var x = 0; x < cols; x++) {
-    for (var y = 0; y < rows; y++) {
-      onOff[counter] = 0;
-      counter++;
-    }
-  }
-
-  print(onOff);
-  noStroke();
+  angleMode(DEGREES);
 }
 
 function draw() {
-  background(220);
-  
-  
- 
-
-  var counter = 0;
-  for (var x = 0; x < cols; x++) {
-    for (var y = 0; y < rows; y++) {
-      fill(255);
-
-      if (
-  
-        xLoc > x * (width / cols) &&
-        xLoc < (x + 1) * (width / cols) &&
-        yLoc > y * (height / rows) &&
-        yLoc < (y + 1) * (height / rows) 
-        //mouseIsPressed == true
-        
-
-      ) {
-        let colFactor = map(x, 0, 50, 0, 1);
-
-        //print(x*width/cols);
-        onOff[counter] = lerpColor(col1, col2, colFactor);
-        // fill(255, 0, 0);
-      }
-
-      if (onOff[counter] != 0) {
-        
-        fill(lerpColor(onOff[counter],col3, random(0.5)));
-        
-        
-        
-        stroke(onOff[counter]);
-      } else {
-        fill(0);
-        stroke(0);
-      }
-
-      rect(
-        x * (width / cols),
-        y * (height / rows),
-        width / cols,
-        height / rows
-      );
-
-      counter++;
-      //text(,25 + i*50 ,25);
-    }
+      background(0);
+  for(const star of stars){
+    star.move()
+    star.display()
   }
-  
-  fill(0,0);
-  stroke(255);
-  ellipse(xLoc, yLoc, 50,50);
-  
- 
-  
-  if(xLoc> width){
-    xSpeed = - xSpeed;
-  }
-   if(yLoc> height){
-    ySpeed = - ySpeed;
-  }
-  if(yLoc<0){
-    ySpeed = - ySpeed;
-  }
-    if(xLoc< 0){
-    xSpeed = - xSpeed;
-  }
-  
-  
-  
 
-   xLoc+=xSpeed;
-  yLoc+=ySpeed;
 }
 
 function mousePressed() {
-  print(onOff);
+  
+  stars.push(new star(mouseX,mouseY))
+//   let f = new flower(mouseX,mouseY);
+//   f.display();
+  
 }
+  
+  
