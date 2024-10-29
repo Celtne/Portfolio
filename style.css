@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Cyberpunk;
+  src: url("Cyberpunk.ttf");
+}
+
 html, body {
   margin: none;
   padding: none;
@@ -36,7 +41,13 @@ button{
 }
 
 h1{
-  font-size: 40px;
+  font-size: 50px;
+  font: weight 100px; ;
+  color: black;
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100px;
+  font-style: normal;
 }
 
 a, a:visited {
@@ -50,6 +61,9 @@ a:hover {
 p{
   font-size: 15px;
   font-style: bold;
+  font-family:"Play", serif;
+  font-weight: 400;
+  font-style: normal;;
 }
 
 #descript{

@@ -3,19 +3,19 @@ let vScale = 8;
 let sound;
 
 function preload() {
-  sound = loadSound('(Audio) torn_wings_cant_fly.mp3');
+  sound = loadSound('torn_wings_cant_fly.mp3');
 }
 
 function setup() {
-  createCanvas(640, 480);
+  createCanvas(windowWidth, windowHeight);
   background(200);
   pixelDensity(1);
   
   vid = createCapture(VIDEO, {flipped: true});
   vid.size(width / vScale, height / vScale);
-    //vid.hide();
+    vid.hide();
   
-     //vid.pixelDensity(1);
+    //  vid.pixelDensity(1);
   sound.play();
   sound.loop();
 }
